@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
-from rest_framework import viewsets, status
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated 
 
 from .models import Task
+from .pagination import TaskPagination
 from .serializers import TaskSerializer
 
 # Create your views here.
@@ -13,6 +14,18 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = TaskPagination
+
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+    ]
+
+    filterset_fields = ["status", "due_date"]
+
+    ordering_fields = ["due_date", "created_at", "updated_at", "title"]
+
+    ordering = ["-created_at"]
 
     def get_queryset(self):
         return Task.objects.filter(owner=self.request.user)
