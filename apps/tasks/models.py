@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -9,6 +10,12 @@ class Task(models.Model):
         TODO = "todo", "To Do"
         IN_PROGRESS = "in_progress", "In Progress"
         DONE = "done", "Done"
+
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="tasks",
+    )
 
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, default="")
@@ -27,4 +34,4 @@ class Task(models.Model):
         verbose_name_plural = "Tasks"
 
     def __str__(self):
-        return f"[{self.status}] {self.title}"
+        return f"[{self.status}] {self.title} (owner: {self.owner})"
