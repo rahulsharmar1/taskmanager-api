@@ -26,7 +26,7 @@ CSRF_COOKIE_SECURE = True
 # ── CORS / Trusted Origins (update with your actual domain) ──────────────────
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
-    default="https://your-app.onrender.com"
+    default="https://taskmanager-api-php8.onrender.com"
 ).split(",")
 
 # ── Logging ───────────────────────────────────────────────────────────────────

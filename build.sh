@@ -11,3 +11,6 @@ python manage.py collectstatic --no-input
 
 # Run any pending database migrations
 python manage.py migrate
+
+# Create superuser without interaction
+python manage.py createsuperuser --no-input || true
