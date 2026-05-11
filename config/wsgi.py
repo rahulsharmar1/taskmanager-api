@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+# Production servers (Gunicorn, uWSGI) use this file as the entry point.
+# The DJANGO_SETTINGS_MODULE environment variable is set in the Render dashboard.
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 
 application = get_wsgi_application()
