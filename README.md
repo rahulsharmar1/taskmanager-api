@@ -201,6 +201,19 @@ All endpoints require authentication. Tasks are scoped to the authenticated user
 python manage.py test apps.tasks.tests --verbosity=2
 ```
 
+## API Access Points
+
+This project supports two primary environments:
+
+### Local Development Environment
+When running `python manage.py runserver`, the API is accessible at:
+`http://127.0.0.1:8000/`
+
+### Live Production Environment
+The live, deployed API endpoint is:
+`https://taskmanager-api-php8.onrender.com/`
+
+
 ## Deployment
 
 Live API: `https://taskmanager-api-php8.onrender.com`
