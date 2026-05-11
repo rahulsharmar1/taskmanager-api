@@ -12,9 +12,14 @@ build/
 
 # Virtual environment
 venv/
-.env
 .venv
+
+# Environment variables — NEVER commit secrets
+.env
 env/
+
+# Collected static files (generated, not source)
+staticfiles/
 
 # Django
 *.log
